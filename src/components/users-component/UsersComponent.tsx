@@ -13,13 +13,13 @@ const UsersComponent = () => {
 
     useEffect(  () => {
         getAllUsers().then((value: IUser[]) => {
-            setUsers(value);
+            setUsers([...value]);
         });
 
     }, []);
 
     const getPosts = (id:number) => {
-        getPostsOfUserById(id).then(posts => setPosts(posts));
+        getPostsOfUserById(id).then(posts => setPosts([...posts]));
     }
 
     return (
