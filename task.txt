@@ -10,3 +10,4 @@ https://jsonplaceholder.typicode.com/users
 в компоненті User зробити кнопку при натсиканні на яку відбувається стейт ліфтінг ід користувача в батьківську
 компоненту. В батьківській компоненті вивести всі пости обраного юзера
 (https://dummyjson.com/docs/posts  Get all posts by user id)
+
