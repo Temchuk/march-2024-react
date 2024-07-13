@@ -1,57 +1,46 @@
-import React, {useRef, useState} from 'react';
+
+import React, { useReducer} from 'react';
 import './App.css';
 
+const reducer = (
+    state: number,
+    action: { type: string, payload: number }
+) => {
+    switch (action.type) {
+        case 'add':
+            return state + action.payload;
+        case 'remove':
+            return state + action.payload;
+    }
+    return state;
+}
 
 const App = () => {
 
 
-    const [counter, setCounter] = useState<number>(0);
-
-    const ref = useRef<number>(100500);
-
+    const [counter, disptach] = useReducer(reducer, 0);
 
     return (
         <div>
+
+            <h2>{counter}</h2>
             <button
-
                 onClick={() => {
-                    setCounter(prevState => prevState + 1);
+                    disptach({type: 'add', payload: 10});
                 }}
+            >inc
+            </button>
+            <hr/>
+            <button
+                onClick={() => {
+                    disptach({type: 'remove', payload: -20});
 
-            >click me {counter}
+                }}
+            >dec
             </button>
 
-
-
-            <button
-
-                onClick={() => {
-                    ref.current = ref.current + 1;
-                    console.log(ref.current)
-                }}
-
-            >click me {counter}
-            </button>
-
-            <h2>ref: {ref.current}</h2>
         </div>
-
-// 1
-        // <div>
-        //     <button
-        //
-        //         onClick={() => {
-        //             setCounter((prevState): any => {
-        //                 console.log('prevState', prevState);
-        //                 return prevState + 1;
-        //             });
-        //         }}
-        //
-        //     >click me {counter}
-    //     </button>
-    // </div>
-
-);
+    );
 }
 
 export default App;
